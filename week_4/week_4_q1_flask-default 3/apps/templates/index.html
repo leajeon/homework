@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Search </title>
+</head>
+<body>
+  <h2> Hello, This is search engine.
+  <div>
+  <ul>
+     Insert words : 
+     <form action="index" method="get">
+        <input type="text" name="text_get">
+        <input type="Submit" value="Submit">
+     </form>
+       <li>
+         <a href = "https://www.google.co.kr/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q={{ variable_get }}"> Google : {{ variable_get}} </a><br>
+         <a href = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query={{ variable_get }}"> Naver : {{ variable_get}} </a><br>
+         <a href = "http://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&o=&q={{ variable_get }}"> Daum : {{ variable_get}} </a>
+      </li>
+   </ul>   
+  </div>
+</body>
+</html>
