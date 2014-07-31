@@ -14,13 +14,13 @@
 	<ul class="entries">
 
 		<a href = "{{url_for("arrange_entry") }}">
-			<button>{{ "like 오름차순" }} </button></a>
+			<button>{{ "like 낮은순" }} </button></a>
 		<a href = "{{url_for("arrange_entry_x") }}">
-			<button>{{ "like 내림차순" }} </button></a>
+			<button>{{ "like 높은순" }} </button></a>
 		<a href = "{{url_for("arrange_entry_hate") }}">
-			<button>{{ "hate 오름차순" }} </button></a>
+			<button>{{ "hate 낮은순" }} </button></a>
 		<a href = "{{url_for("arrange_entry_hate_x") }}">
-			<button>{{ "hate 내림차순" }} </button></a>
+			<button>{{ "hate 높은순" }} </button></a>
 
 	{% for entry in entries %}
 		<li>
