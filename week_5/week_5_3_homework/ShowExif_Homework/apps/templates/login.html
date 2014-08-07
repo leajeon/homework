@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+    
+</head>
+<body>
+    <fieldset>
+        <form action="{{ url_for('login') }}" method="post" class="add-entry">
+        	아이디와 패스워드를 입력하세요
+		<dl>
+			<dt>ID:
+			<dd><input type="text" size=30 name="id">
+			<dt>PASSWORD:
+			<dd><input type="password" size=30 name="password">
+			<dd><input type="submit" value="login">
+		</dl>
+			{% if comment %}
+			{{comment}}
+			{% endif %}
+	</form>
+    </fieldset>
+</body>
+</html>
