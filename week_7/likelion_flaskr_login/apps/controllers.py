@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from kstime import kstime
-from flask import render_template, request, redirect, url_for, flash, g, session#g는 지역변수가 아니고, 전역변수란다.음??#
+from flask import render_template, request, redirect, url_for, flash, jsonify, g, session#g는 지역변수가 아니고, 전역변수란다.음??#
 from werkzeug.security import generate_password_hash, \
      check_password_hash
 from sqlalchemy import desc
@@ -116,6 +116,18 @@ def article_like(id):
     return redirect(url_for('article_detail', id=id))
 
 
+@app.route('/article/detail_like', methods=['GET'])
+def article_like_ajax():
+    id = request.args.get("id", 0, type = int)
+
+    article = Article.query.get(id)
+    article.like += 1
+
+    db.session.commit()
+
+    return jsonify(id=id)
+
+
 #
 # @comment controllers
 #
@@ -125,8 +137,8 @@ def comment_create(article_id):
     if request.method == 'POST':
         if form.validate_on_submit():
             comment = Comment(
-                author=form.author.data,
-                email=form.email.data,
+                author=g.user_name,
+                email=g.user_email,
                 content=form.content.data,
                 password=form.password.data,
                 date_created = kstime(9),
