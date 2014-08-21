@@ -105,7 +105,7 @@ def article_delete(id):
         flash(u'게시글을 삭제하였습니다.', 'success')
         return redirect(url_for('article_list'))
 
-
+#109번줄부터 116번줄은 없내도 무방함
 @app.route('/article/like/<int:id>', methods=['GET'])
 def article_like(id):
     article = Article.query.get(id)
@@ -173,7 +173,7 @@ def comment_delete(id):
         flash(u'경고! 댓글이 완전히 삭제되니, 다시 한번 확인하시기 바랍니다.', 'warning')
         return render_template('comment/delete.html', comment_id=id)
 
-        
+ #177번줄부터 185번줄은 없어도 무방.       
 @app.route('/comment/like/<int:id>', methods=['GET'])
 def comment_like(id):
     comment = Comment.query.get(id)
@@ -183,6 +183,17 @@ def comment_like(id):
     db.session.commit()
 
     return redirect(url_for('article_detail', id=article_id))
+
+@app.route('/comment/detail_like', methods=['GET'])
+def comment_like_ajax():
+    id = request.args.get("id", 0, type = int)
+
+    comment = Comment.query.get(id)
+    comment.like += 1
+
+    db.session.commit()
+
+    return jsonify(id=id)
 
 
 #

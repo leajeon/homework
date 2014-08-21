@@ -33,7 +33,11 @@
                             <small>
                                 <a href="mailto:{{ comment.email }}">{{ comment.email }}</a> <em>{{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}   </em>
                             </small>
-                            <a href="{{ url_for('comment_like', id=comment.id) }}" class="btn btn-warning btn-xs"><i class="fa fa-thumbs-o-up"></i> {{ comment.like }}</a>
+                            <button type="button" class="btn btn-warning btn-xs">
+                                <i class="fa fa-thumbs-o-up"></i> 
+                                <span>{{ article.like }}</span>
+                                <input name="id" type="hidden" value="{{ article.id }}"/>
+                            </button>
                         </span>
                     </div>
                 {% endfor %}
@@ -45,7 +49,11 @@
                             <small>
                                 <a href="mailto:{{ comment.email }}">{{ comment.email }}</a> <em>{{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}   </em>
                             </small>
-                            <a href="{{ url_for('comment_like', id=comment.id) }}" class="btn btn-warning btn-xs"><i class="fa fa-thumbs-o-up"></i> {{ comment.like }}</a>
+                            <button type="button" class="btn btn-warning btn-xs">
+                                <i class="fa fa-thumbs-o-up"></i> 
+                                <span>{{ comment.like }}</span>
+                                <input name="id" type="hidden" value="{{ article.id }}"/>
+                            </button>
                         </span>
                     </div>
                 <div class="no-list">
